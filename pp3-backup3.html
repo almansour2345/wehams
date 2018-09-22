@@ -1,0 +1,289 @@
+<?php 
+session_start(); 
+if(!isset($_SESSION['username'])){ 
+header ("Location: /index.html");
+}
+else {
+$rrt=$_SESSION['stuser'];
+$usrr=$_SESSION['username'];
+
+$_SESSION['stuser'] = "true";
+ }
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<title>عيادات همس </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="CSS/c4.css">
+<link rel="stylesheet" href="CSS/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.js"></script>
+
+<style>
+
+
+    body {
+ 	font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+    float: left;
+    width: 100%;
+    padding: 120px;
+  	font-size: 1vw;
+	height:auto;
+}
+
+/* Style the list inside the menu */
+nav ul {
+    list-style-type: arabic-indic;
+    padding: 10px 10px 0px 0px;
+    top:50px;
+
+}
+
+ 
+
+/* Clear floats after the columns */
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the footer */
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+    nav, article {
+        width: 100%;
+        height: auto;
+    }
+  
+}
+
+.newspaper {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+
+    -webkit-column-gap: 20px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 20px; /* Firefox */
+    column-gap: 20px;
+
+    -webkit-column-rule: 4px double #404552; /* Chrome, Safari, Opera */
+    -moz-column-rule: 4px double #404552; /* Firefox */
+    column-rule: 4px double #404552;
+}
+ 
+</style>
+
+<body class=" w3-select  w3-animate-zoom " id="myPage">
+
+
+    <div class="w3-top">
+        <div class="w3-bar w3-theme-d2 w3-right-align">
+            <a class="w3-bar-item w3-button w3-teal"> <img src="imger/logo2.gif" alt="hams.com" width="170" height="151" />
+            </a>
+
+            <?php
+ echo '<div class=\".w3-theme-l2\" style=\"color:white;font-size:18px;width: 308px; z-index: 0; left: 10px; top:  52px; position: absolute; padding:20px 54px 14px 13px;float:right;width:auto;border:none;display:block;outline:0;\">';
+echo  " مرحبا بك ";
+echo " welcome  " . $usrr . " " ;
+echo " <br>";
+echo " \r\n";
+echo " <br>";
+echo '<a class="w3-bar-item w3-button w3-teal" href="/pps/delall.php" >خروج</a>';
+echo "</div>";
+ ?>
+
+            <div class=".w3-theme-l2" style="top:0px;left:500px;">
+                <a href="/pp2.html" class="w3-bar-item w3-button w3-teal">الرئيسية</a>
+                <a href="#work" class="w3-bar-item w3-button w3-teal">بحث المرضى</a>
+                <a href="#pricing" class="w3-bar-item w3-button w3-teal">الفواتير</a>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <br>
+    <form class=" w3-select  w3-animate-zoom " action="/pps/action_reg.php" style="top:11px;overflow:auto;font-size:55px;">
+        <div class="newspaper" style="overflow:auto;">
+
+            <section>
+                <nav>
+                    <ul>
+                        <fieldset>
+                            <legend>
+                                <h2 class=" w3-select  w3-animate-zoom ">معلومات المريض</h2>
+                            </legend>
+                            <li><label style="overflow:auto;" style="overflow:auto;" for="pnatnum"><b>السجل المدني :</b></label></li>
+                            <input style="overflow:auto;" style="overflow:auto;" type="text" tabindex="1" name="pnatnum" required>
+                            <br>
+                            <li><label style="overflow:auto;" style="overflow:auto;" for="pname"><b>اسم المريض:</b></label></li>
+                            <input style="overflow:auto;" style="overflow:auto;" type="text" tabindex="2" placeholder="اسم المريض" name="pname" required>
+                            <br>
+                            <br>
+                            <li><label style="overflow:auto;" style="overflow:auto;" for="pfam"><b>اسم العائلة:</b></label></li>
+                            <input style="overflow:auto;" style="overflow:auto;" type="text" tabindex="2" placeholder="اسم العائلة" name="pfam" required>
+                            <br>
+                            <li><label style="overflow:auto;" for="psex"><b>الجنس:</b></label></li>
+                            <select class="w3-select  w3-animate-zoom" name="psex" style="width:215px;">
+                                <option value="ذكر">ذكر</option>
+                                <option value="انثى">انثى</option>
+                            </select>
+                            <br>
+                            <li><label style="overflow:auto;" for="pdof"><b>تاريخ الميلاد</b></label></li>
+                            <input id="aged" class=" w3-select  w3-animate-zoom" type="date" name="pdof" style="width:215px;" tabindex="4">
+                            <li><label style="overflow:auto;" for="page"><b>العمر</b></label></li>
+                            <input id="agecal" onclick='javascript:calc();' style="overflow:auto;width:215px;" type="number" name="page" tabindex="5">
+                            <br>
+                            <li><label style="overflow:auto;width:215px;" for="paddress"><b>العنوان</b></label></li>
+                            <input style="overflow:auto;width:215px;" type="text" placeholder="ادخل العنوان" name="paddress" tabindex="6">
+                            <br>
+                            <li><label style="overflow:auto;width:215px;" for="phphone"><b>رقم تلفون المنزل</b></label></li>
+                            <input style="overflow:auto;width:215px;" type="tel" placeholder="011.." pattern="[0-9]{3}[0-9]{3}[0-9]{4}" name="phphone" tabindex="7">
+                            <br>
+                            <li><label style="overflow:auto;width:215px;" for="pmphone"><b>رقم جوال الأم</b></label></li>
+                            <li> <input style="overflow:auto;" type="tel" placeholder="055.." pattern="[0-9]{3}[0-9]{3}[0-9]{4}" name="pmphone" tabindex="8">
+                            <li><label style="overflow:auto;" for="pfphone"><b>رقم جوال الاب</b></label></li>
+                            <input style="overflow:auto;" type="tel" placeholder="055.." pattern="[0-9]{3}[0-9]{3}[0-9]{4}" name="pfphone" tabindex="9">
+                            <li><label style="overflow:auto;" for="pschool"><b>المدرسة</b></label></li>
+                            <input style="overflow:auto;" type="text" name="pschool" tabindex="10">
+                        </fieldset>
+                    </ul>
+                    <ul>
+                        <fieldset>
+                            <legend>
+                                <h1>معلومات الاقارب</h1>
+                            </legend>
+
+                            <legend>
+                                <h2>:الاب</h2>
+                            </legend>
+                            <br>
+                            <li><label style="overflow:auto;" for="pfather"><b> اسم الاب:</b></label></li>
+                            <input style="overflow:auto;" type="text" placeholder="" name="pfather" tabindex="11">
+                            <br>
+                            <li><label style="overflow:auto;" for="pfedu"><b>المستوى التعليمي:</b></label></li>
+                            <select name="pfedu" style="width:115px;">
+                                <option value="غيرمتعلم">غير متعلم</option>
+                                <option value="ابتدائي">إبتدائي</option>
+                                <option value="متوسط">متوسط</option>
+                                <option value="ثانوي">ثانوي</option>
+                                <option value="دبلوم">دبلوم</option>
+                                <option value="باكليريوس">باكليريوس</option>
+                                <option value="ماجستير">ماجستير</option>
+                                <option value="دكتوراة">دكتوراة</option>
+                            </select tabindex="12">
+                            <br>
+                            <li><label style="overflow:auto;" for="pfjob"><b>المهنة:</b></label></li>
+                            <input style="overflow:auto;" type="text" name="pfjob" tabindex="13">
+                            <br>
+                            <legend>
+                                <h2>:الأم</h2>
+                            </legend>
+                            <li><label style="overflow:auto;" for="pmname"><b> اسم الأم: </b></label></li>
+                            <input style="overflow:auto;" type="text" placeholder="" name="pmname" tabindex="14">
+                            <br>
+                            <li><label style="overflow:auto;" for="pmedu "><b> المستوى التعليمي </b></label></li>
+                            <select name="pmedu" style="width:115px;">
+                                <option value="غيرمتعلم">غير متعلم</option>
+                                <option value="ابتدائي">إبتدائي</option>
+                                <option value="متوسط">متوسط</option>
+                                <option value="ثانوي">ثانوي</option>
+                                <option value="دبلوم">دبلوم</option>
+                                <option value="باكليريوس">باكليريوس</option>
+                                <option value="ماجستير">ماجستير</option>
+                                <option value="دكتوراة">دكتوراة</option>
+                            </select tabindex="15"> <br>
+                            <li><label style="overflow:auto;" for="pmjob"><b>المهنة</b></label></li>
+                            <input style="overflow:auto;" type="text" name="pmjob" tabindex="16">
+
+                        </fieldset>
+                    </ul>
+
+
+            </section>
+
+
+
+            <section>
+                <nav>
+                    <ul style="top:0px;overflow:auto;">
+                        <fieldset>
+
+                            <li><label style="overflow:auto;" for="message"><b>التشخيص المبدئي</b></label></li>
+                            <br>
+                            <textarea name="message" rows="30" cols="60" style="width: 100%; height: 380px; " tabindex="16" dir="rtl"></textarea>
+                            <br> <br>
+                            <li><label style="overflow:auto;" style="overflow:auto;" for="dname"><b>اسم المقيم :</b></label></li>
+                            <input style="overflow:auto;" style="overflow:auto;" type="text" name="dname">
+                            <br>
+                            <br>
+
+                            <li><label style="overflow:auto;" for="messagedate"><b> :تاريخ التقييم</b></label></li>
+                            <input id="demo" style="overflow:auto;" type="date" name="messagedate">
+                            <br>
+
+                        </fieldset>
+                    </ul>
+
+
+
+                    <div class="" style="background-color:#f1f1f1">
+                        <button style="color:linen;left: 440px;position: absolute;" type="submit">تسجيل</button>
+                        <button style="color:linen;left: 290px;position: absolute;" type="Reset" class="cancelbtn">إلغاء</button>
+                    </div>
+                </nav>
+            </section>
+
+        </div>
+        </div>
+    </form>
+
+</body>
+
+</html>
+<script>
+    document.getElementById('demo').valueAsDate = new Date();
+
+</script>
+
+
+<script type="text/javascript">
+    function calcAge(dtFrom, dtTo) {
+        var a = dtTo.getDate() + (dtTo.getMonth() + (dtTo.getFullYear() - 1700) * 16) * 32;
+        var b = dtFrom.getDate() + (dtFrom.getMonth() + (dtFrom.getFullYear() - 1700) * 16) * 32;
+        var x = Math.floor((a - b) / 32 / 16);
+        return x < 0 ? null : x;
+    }
+
+
+
+
+    function calc() {
+        var dtTo = new Date();
+        var dtFrom = new Date(document.getElementById('aged').value);
+        var age = dtTo - dtFrom
+
+        document.getElementById('agecal').value = calcAge(dtFrom, dtTo);
+        return false;
+    }
+
+</script>

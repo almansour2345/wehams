@@ -1,0 +1,316 @@
+<?php 
+session_start(); 
+if(!isset($_SESSION['username'])){ 
+header ("Location: /index.html");
+}
+else {
+$rrt=$_SESSION['stuser'];
+$usrr=$_SESSION['username'];
+
+$_SESSION['stuser'] = "true";
+ }
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<title>عيادات همس </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="CSS/c4.css">
+<link rel="stylesheet" href="CSS/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.js"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+ 	font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+    float: left;
+    width: 100%;
+
+    padding: 120px;
+ 
+
+}
+
+/* Style the list inside the menu */
+nav ul {
+    list-style-type: none;
+    padding: 110px;
+    
+}
+
+article {
+    float: left;
+    padding: 20px;
+    width: 70%;
+    background-color: #f1f1f1;
+    height: 300px; /* only for demonstration, should be removed */
+}
+
+
+/* Clear floats after the columns */
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the footer */
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+    nav, article {
+        width: 100%;
+        height: auto;
+    }
+  
+}
+
+.newspaper {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+
+    -webkit-column-gap: 10px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 10px; /* Firefox */
+    column-gap: 10px;
+
+    -webkit-column-rule: 2px double #404552; /* Chrome, Safari, Opera */
+    -moz-column-rule: 2px double #404552; /* Firefox */
+    column-rule: 2px double #404552;
+}
+</style>
+
+<body id="myPage">
+
+
+<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"> 
+  <a href="" class="w3-bar-item w3-button w3-teal"> <img src="imger/logo.jpg" alt="hams.com" width="170" height="151" />
+ </a>
+ 
+ 
+ <?php
+ echo "<div style=\"color:white;font-size:18px;width: 308px; z-index: 0; left: 271px; top:  52px; position: absolute; height: 182px; margin-left: 0px; \">";
+echo  " مرحبا بك يا ";
+echo " welcome  " . $usrr . " " ;
+echo " <br>";
+echo " \r\n";
+echo " <br>";
+echo '<a class="w3-bar-item w3-button w3-teal" href="/pps/delall.php" >خروج</a>';
+echo "</div>";
+ ?>    
+ </div>
+ 
+ 
+
+
+</div>
+
+
+ 
+
+
+
+
+	<br>
+	<br>
+	<br>
+<form action="/pps/userreg.php" method="post" style="overflow:auto">
+
+<div class="newspaper"   style="overflow:auto" >
+    
+<section>
+  <nav>   
+    <ul> 
+   
+  		 <h2>معلومات المريض</h2>
+    <li><label  style="overflow:auto" style="overflow:auto" for="pnatnum"><b>السجل المدني :</b></label></li>
+    <input  style="overflow:auto" style="overflow:auto" type="text" name="pnatnum" required>
+    <br>
+    <li><label  style="overflow:auto"  style="overflow:auto" for="pname"><b>اسم المريض:</b></label></li>
+    <input  style="overflow:auto" style="overflow:auto" type="text" placeholder="اسم المريض" name="pname"  required>
+    <br>
+    <li><label  style="overflow:auto"  for="psex"><b>الجنس:</b></label></li>
+    <input  style="overflow:auto" type="text"  name="psex" required>
+	<br>
+	<li><label  style="overflow:auto"  for="pdof"><b>تاريخ الميلاد</b></label></li>
+    <input  style="overflow:auto" type="date" name="pdof" >
+    <li><label  style="overflow:auto"  for="page"><b>العمر</b></label></li>
+    <input  style="overflow:auto"  type="number"  name="page"  >
+	<br>
+    <li><label  style="overflow:auto"  for="paddress"><b>العنوان</b></label></li>
+    <input  style="overflow:auto" type="text" placeholder="ادخل العنوان" name="paddress"  >
+	<br>
+	<li><label  style="overflow:auto"  for="phphone"><b>رقم تلفون المنزل</b></label></li>
+    <input  style="overflow:auto" type="tel"  placeholder="011" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"  name="phphone"  >
+    <br>
+    <li><label  style="overflow:auto"  for="pmphone"><b>رقم جوال الأم</b></label></li>
+    <input  style="overflow:auto" type="tel"  placeholder="055.." pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="pmphone" >
+    <li><label  style="overflow:auto"  for="pfphone"><b>رقم جوال الاب</b></label></li>
+    <input  style="overflow:auto" type="tel"  placeholder="055.." pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="pfphone">
+
+		<li><label  style="overflow:auto"  for="pschool"><b>المدرسة</b></label></li>
+		<input  style="overflow:auto" type="text"  name="pschool">
+		<br>   
+		 <h2>معلومات الاقارب</h2>
+		<li><label  style="overflow:auto"  for="pfather"><b>  اسم الاب</b></label></li>
+		<input  style="overflow:auto" type="text" placeholder="" name="pfather"  >
+		<br>   
+		<li><label  style="overflow:auto"  for="pfedu"><b> مستوى تعليم الاب</b></label></li>
+		<input  style="overflow:auto" type="text" placeholder="" name="pfedu"  >
+		
+		<br> 
+		<br>   
+		
+		<li><label  style="overflow:auto"  for="pschool"><b>المدرسة</b></label></li>
+		<input  style="overflow:auto" type="text"  name="pschool">
+		
+		<br>
+		<br>  
+		<li><label  style="overflow:auto"  for=" "><b> </b></label></li>
+		<input  style="overflow:auto" type="text" placeholder="" name=""  >
+		<br>   
+		<li><label  style="overflow:auto"  for=" "><b> </b></label></li>
+		<input  style="overflow:auto" type="text" placeholder="" name=""  >
+		
+		
+		<br>
+		<br>   
+		
+		<li><label  style="overflow:auto"  for="pschool"><b>المدرسة</b></label></li>
+		<input  style="overflow:auto" type="text"  me="pschool">
+   </ul>
+     </nav>
+     </section>
+
+
+<section>
+  <nav>   
+    <ul> 
+   
+  
+    <li><label  style="overflow:auto" style="overflow:auto" for="pnatnum"><b>السجل المدني :</b></label></li>
+    <input  style="overflow:auto" style="overflow:auto" type="text" name="pnatnum" required>
+    <br>
+    <li><label  style="overflow:auto"  style="overflow:auto" for="pname"><b>اسم المريض:</b></label></li>
+    <input  style="overflow:auto" style="overflow:auto" type="text" placeholder="اسم المريض" name="pname"  required>
+    <br>
+    <li><label  style="overflow:auto"  for="psex"><b>الجنس:</b></label></li>
+    <input  style="overflow:auto" type="text"  name="psex" required>
+	<br>
+	<li><label  style="overflow:auto"  for="pdof"><b>تاريخ الميلاد</b></label></li>
+    <input  style="overflow:auto" type="date" name="pdof" >
+    <li><label  style="overflow:auto"  for="page"><b>العمر</b></label></li>
+    <input  style="overflow:auto"  type="number"  name="page"  >
+	<br>
+    <li><label  style="overflow:auto"  for="paddress"><b>العنوان</b></label></li>
+    <input  style="overflow:auto" type="text" placeholder="ادخل العنوان" name="paddress"  >
+	<br>
+	<li><label  style="overflow:auto"  for="phphone"><b>رقم تلفون المنزل</b></label></li>
+    <input  style="overflow:auto" type="tel"  placeholder="011" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"  name="phphone"  >
+    <br>
+    <li><label  style="overflow:auto"  for="pmphone"><b>رقم جوال الأم</b></label></li>
+    <input  style="overflow:auto" type="tel"  placeholder="055.." pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="pmphone" >
+    <li><label  style="overflow:auto"  for="pfphone"><b>رقم جوال الاب</b></label></li>
+    <input  style="overflow:auto" type="tel"  placeholder="055.." pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="pfphone">
+		<br>   
+		 <h2>Cities</h2>
+		<li><label  style="overflow:auto"  for="pschool"><b>المدرسة</b></label></li>
+		<input  style="overflow:auto" type="text"  name="pschool">
+		
+		<br>
+		<br>  
+		<li><label  style="overflow:auto"  for=" "><b> </b></label></li>
+		<input  style="overflow:auto" type="text" placeholder="" name=""  >
+		<br>   
+		<li><label  style="overflow:auto"  for=" "><b> </b></label></li>
+		<input  style="overflow:auto" type="text" placeholder="" name=""  >
+		
+		<br>
+		<br>   
+		
+		<li><label  style="overflow:auto"  for="pschool"><b>المدرسة</b></label></li>
+		<input  style="overflow:auto" type="text"  name="pschool">
+		
+		<br>
+		<br>  
+		<li><label  style="overflow:auto"  for=" "><b> </b></label></li>
+		<input  style="overflow:auto" type="text" placeholder="" name=""  >
+		<br>   
+		<li><label  style="overflow:auto"  for=" "><b> </b></label></li>
+		<input  style="overflow:auto" type="text" placeholder="" name=""  >
+		
+		
+		<br>
+		<br>   
+		
+		<li><label  style="overflow:auto"  for="pschool"><b>المدرسة</b></label></li>
+		<input  style="overflow:auto" type="text"  me="pschool">
+   </ul>
+     </nav>
+     </section>
+
+  </div>
+  
+
+
+ <div class="container" style="background-color:#f1f1f1">
+    <button type="submit">Login</button> 
+    <button  type="button" class="cancelbtn" >Cancel</button>
+   
+  </div>
+>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <script> // Sc
+ipt for side navigation funct
+on w3_open() { var x
+    = document.getElementById("mySidebar"); x.sty
+    e.width = "300px"; x.sty
+    e.paddingTop = "10%"; x.sty
+    e.display = "block"; }
+
+//
+Close side navigation funct
+on w3_close() { docum
+    nt.getElementById("mySidebar").style.display = "none"; }
+
+
+
+
+/script>
+
+</body> </htm
+>

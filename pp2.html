@@ -1,0 +1,234 @@
+<?php 
+session_start(); 
+if(!isset($_SESSION['username'])){ 
+header ("Location: /index.html");
+}
+else {
+$rrt=$_SESSION['stuser'];
+$usrr=$_SESSION['username'];
+
+$_SESSION['stuser'] = "true";
+ }
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<title>عيادات همس </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-size: 22px;
+        font-family: Arial, Helvetica, sans-serif;
+        height: 2700px;
+    }
+
+
+
+    /* Create two columns/boxes that floats next to each other */
+    nav {
+        float: left;
+        width: 100%;
+        padding: 120px;
+        font-size: 20px;
+        height: auto;
+    }
+
+    /* Style the list inside the menu */
+    nav ul {
+        list-style-type: none;
+        padding: 110px;
+
+    }
+
+    td th {
+        font-size: 20px;
+        text-align: right;
+    }
+
+    td {
+        color: green;
+        font-size: 21pt;
+        outline: none;
+    }
+
+    a:link {
+        color: red;
+        text-decoration: none;
+    }
+
+    /* Clear floats after the columns */
+    section:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Style the footer */
+    footer {
+        background-color: #777;
+        padding: 10px;
+        text-align: center;
+        color: white;
+    }
+
+    @media only screen and (max-width: 768px) {
+
+        /* For mobile phones: */
+        nav,
+        article {
+            width: 100%;
+
+        }
+
+    }
+
+    .newspaper {
+        -webkit-column-count: 2;
+        /* Chrome, Safari, Opera */
+        -moz-column-count: 2;
+        /* Firefox */
+        column-count: 2;
+
+        -webkit-column-gap: 10px;
+        /* Chrome, Safari, Opera */
+        -moz-column-gap: 10px;
+        /* Firefox */
+        column-gap: 10px;
+
+        -webkit-column-rule: 4px double #404552;
+        /* Chrome, Safari, Opera */
+        -moz-column-rule: 4px double #404552;
+        /* Firefox */
+        column-rule: 4px double #404552;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="CSS/c4.css">
+<link rel="stylesheet" href="CSS/bootstrap.min.css">
+<link rel="stylesheet" href="CSS/c6.css">
+<link rel="stylesheet" href="CSS/font-awesome.min.css">
+
+
+<script src="js/jquery.js"></script>
+
+</head>
+
+<body class="    w3-animate-zoom " id="myPage">
+
+    <div id="toper" class="w3-top">
+        <div class="w3-bar w3-dropdown-hover w3-medium w3-theme-d3 w3-center">
+            <a class="w3-bar-item w3-button w3-teal"> <img src="imger/logo2.gif" alt="hams.com" width="170" height="151" />
+            </a>
+
+            <?php
+echo '<div class=\"w3-bar-item w3-dropdown-hover \" style=\"color:white;font-size:auto;width: 308px; z-index: 0; left: 10px; top:  52px; position: absolute; padding:5px 5px 5px 5px;float:right;width:auto; display:block;outline:0;\">';
+echo  " مرحبا بك يا ";
+echo " welcome  " . $usrr . " " ;
+echo " <br>";
+echo " \r\n";
+echo " <br>";
+echo '<a class="flex-container w3-bar-item w3-button w3-teal" href="/pps/delall.php" >خروج</a>';
+echo "</div>";
+ ?>
+
+            <div class="w3-theme-l2" style="top:0px;left:500px;">
+                <a href="/pp3.html" class="w3-bar-item w3-button w3-teal">تسجيل مريض </a>
+                <a href="/pp2.html" class="w3-bar-item w3-button w3-teal dropbtn dropdown-btn">الرئيسية</a>
+
+                <a href="/tester.html" class="w3-bar-item w3-button w3-teal">الفواتير</a>
+
+
+                <div class="w3-bar-item w3-teal dropdown">
+                    <a href="#" onclick="myFunctiondr()" class="w3-bar-item w3-button w3-teal dropbtn dropdown-btn">بحث </a>
+                    <div class="dropdown-content" id="myDropdown">
+                        <a href="../pp4.html">بحث بالإسم</a>
+                        <a href="#">بحث برقم المريض</a>
+                        <a href="#"> بحث برقم الجوال</a>
+                        <a href="#"> بحث برقم الهاتف</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <div id="returner" style="top:120px;padding:10px;position:absolute;height: 380px;width:114%;"></div>
+    <div class="">
+        <h2>سجلات المرضى </h2>
+
+    </div>
+    <div class="framer w3-theme-d3 w3-center" style="position:relative;height:100%;width:100%;">
+        <iframe class="framer1" style="width:100%;height:100%;" src="/pps/pationslist.php"></iframe>
+        <br>
+
+        <br>
+    </div>
+    </div>
+    <br>
+
+
+</body>
+
+</html>
+<script>
+    // Script for side navigation
+    function w3_open() {
+        var x = document.getElementById("mySidebar");
+        x.style.width = "300px";
+        x.style.paddingTop = "10%";
+        x.style.display = "block";
+    }
+
+    // Close side navigation
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+    }
+
+</script>
+
+<script>
+    $(document).ready(function() {
+        $("#framer").mouseover(function() {
+            $("#toper").slideUp("slow");
+        });
+    });
+
+</script>
+<script>
+    $(document).ready(function() {
+        $("#returner").mouseover(function() {
+            $("#toper").slideDown("slow");
+        });
+    });
+
+</script>
+
+
+<script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunctiondr() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(e) {
+        if (!e.target.matches('.dropbtn')) {
+            var myDropdown = document.getElementById("myDropdown");
+            if (myDropdown.classList.contains('show')) {
+                myDropdown.classList.remove('show');
+            }
+        }
+    }
+
+</script>

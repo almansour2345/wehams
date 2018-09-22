@@ -1,0 +1,250 @@
+<?php 
+session_start(); 
+if(!isset($_SESSION['username'])){ 
+header ("Location: /index.html");
+}
+else {
+$rrt=$_SESSION['stuser'];
+$usrr=$_SESSION['username'];
+
+$_SESSION['stuser'] = "true";
+ }
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<title>عيادات همس </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    * {
+    box-sizing: border-box;
+}
+
+body {
+ 	font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+	height:2700px;
+}
+
+
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+    float: left;
+    width: 100%;
+    padding: 120px;
+  	font-size: 20px;
+	height:auto;
+}
+
+/* Style the list inside the menu */
+nav ul {
+    list-style-type: none;
+    padding: 110px;
+
+}
+
+td th{
+	font-size: 20px;
+	text-align:right;
+	}
+td{	
+	color:green;
+	font-size: 21pt;
+	outline:none;
+}
+tr:hover {
+	text-decoration:#BBEEFF;
+}
+
+a:link {
+    color: red;
+     text-decoration: none;
+}
+
+/* Clear floats after the columns */
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the footer */
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    nav, article {
+        width: 100%;
+ 
+    }
+  
+}
+
+.newspaper {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+
+    -webkit-column-gap: 10px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 10px; /* Firefox */
+    column-gap: 10px;
+
+    -webkit-column-rule: 4px double #404552; /* Chrome, Safari, Opera */
+    -moz-column-rule: 4px double #404552; /* Firefox */
+    column-rule: 4px double #404552;
+}
+ 
+ 
+</style>
+
+
+<link rel="stylesheet" href="CSS/c4.css">
+<link rel="stylesheet" href="CSS/bootstrap.min.css">
+<link rel="stylesheet" href="CSS/c6.css">
+<link rel="stylesheet" href="CSS/font-awesome.min.css">
+
+
+<script src="js/jquery.js"></script>
+
+</head>
+
+<body class=" w3-select  w3-animate-zoom " id="myPage">
+
+    <div id="toper" class="w3-top">
+        <div class="w3-bar w3-theme-d2 w3-right-align">
+            <a class="w3-bar-item w3-button w3-teal"> <img src="imger/logo2.gif" alt="hams.com" width="170" height="151" />
+            </a>
+
+            <?php
+echo '<div class=\"w3-bar-item \" style=\"color:white;font-size:auto;width: 308px; z-index: 0; left: 10px; top:  52px; position: absolute; padding:5px 5px 5px 5px;float:right;width:auto; display:block;outline:0;\">';
+echo  " مرحبا بك يا ";
+echo " welcome  " . $usrr . " " ;
+echo " <br>";
+echo " \r\n";
+echo " <br>";
+echo '<a class="flex-container w3-bar-item w3-button w3-teal" href="/pps/delall.php" >خروج</a>';
+echo "</div>";
+ ?>
+
+            <div class="w3-theme-l2" style="top:0px;left:500px;">
+                <a href="/pp3.html" class="w3-bar-item w3-button w3-teal">تسجيل مريض </a>
+                <a href="/pp2.html" class="w3-bar-item w3-button w3-teal dropbtn dropdown-btn">الرئيسية</a>
+
+                <a href="/tester.html" class="w3-bar-item w3-button w3-teal">الفواتير</a>
+
+
+                <div class="w3-bar-item w3-teal dropdown">
+                    <a href="#" onclick="myFunctiondr()" class="w3-bar-item w3-button w3-teal dropbtn dropdown-btn">بحث </a>
+                    <div class="dropdown-content" id="myDropdown">
+                        <a href="#">بحث بالإسم</a>
+                        <a href="#">بحث برقم المريض</a>
+                        <a href="#"> بحث برقم الجوال</a>
+                        <a href="#"> بحث برقم الهاتف</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <div id="returner" style="top:70px;padding:10px;position:absolute;height: 180px;width:114%;"></div>
+
+    <form class="w3-animate-zoom " action="/pps/bynamer.php" style="top:11px;overflow:auto;font-size:55px;">
+        <nav>
+            <ul>
+                <fieldset id="framer">
+
+                    <h2 class=" w3-select  w3-animate-zoom ">بحث بالاسم</h2>
+                    <li><label style="overflow:auto;width:215px;" style="overflow:auto;width:215px;" for="namer">
+                            اسم المريض:
+                        </label></b></label></li>
+                    <input style="overflow:auto;width:415px;" style="overflow:auto;width:215px;" type="text" tabindex="1" name="namer" required>
+                    <br>
+
+                </fieldset>
+                <br>
+                <br>
+
+
+
+                <div class="container">
+                    <button type="submit">بحث</button>
+                    <button type="button" class="cancelbtn">إلغاء</button>
+
+                </div>
+
+            </ul>
+    </form>
+
+    <div class="">
+        <h2>سجلات المرضى </h2>
+
+    </div>
+    <div id="framer" style="padding:110px;position:relative;height:100%;width:100%;">
+        <iframe style="border: 1px dotted #00564D; border-radius: 15px;display: block;padding:5px 5px 5px 5px;position:absolute;width:90%;height:100%;font-size: 20px;" src=""></iframe>
+        <br>
+
+        <br>
+    </div>
+    </div>
+
+</body>
+
+</html>
+
+
+
+
+<script>
+    $(document).ready(function() {
+        $("#framer").mouseover(function() {
+            $("#toper").slideUp("slow");
+        });
+
+    });
+
+</script>
+<script>
+    $(document).ready(function() {
+        $("#returner").mouseover(function() {
+            $("#toper").slideDown("slow");
+        });
+
+    });
+
+</script>
+<script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunctiondr() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(e) {
+        if (!e.target.matches('.dropbtn')) {
+            var myDropdown = document.getElementById("myDropdown");
+            if (myDropdown.classList.contains('show')) {
+                myDropdown.classList.remove('show');
+            }
+        }
+    }
+
+</script>
+
+
+
+<script>
+    document.getElementById("framer")
+
+</script>

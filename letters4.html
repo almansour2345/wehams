@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+    background-color: red;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+</style>
+</head>
+<body>
+
+<h3>اختر حرف من القائمة</h3>
+<select id="mySelect">
+  <option onclick="getOption();" value="أ" >أ</option>
+  <option onclick="getOption();" value="ب">ب</option>
+  <option onclick="getOption();" value="ت">ت</option>
+  <option onclick="getOption();" value="ث">ث</option>
+  <option onclick="getOption();"  value="ج" >ج</option>
+  <option onclick="getOption();" value="A" >أ</option>
+  <option onclick="getOption();" value="b">ب</option>
+  <option onclick="getOption();" value="c">ت</option>
+  <option onclick="getOption();" value="d">ث</option>
+  <option onclick="getOption();"  value="f" >ج</option>
+    <option onclick="getOption();" value="A" >أ</option>
+  <option onclick="getOption();" value="b">ب</option>
+  <option onclick="getOption();" value="c">ت</option>
+  <option onclick="getOption();" value="d">ث</option>
+  <option onclick="getOption();"  value="f" >ج</option>
+    <option onclick="getOption();" value="A" >أ</option>
+  <option onclick="getOption();" value="b">ب</option>
+  <option onclick="getOption();" value="c">ت</option>
+  <option onclick="getOption();" value="d">ث</option>
+  <option onclick="getOption();"  value="f" >ج</option>
+    <option onclick="getOption();" value="A" >أ</option>
+  <option onclick="getOption();" value="b">ب</option>
+  <option onclick="getOption();" value="c">ت</option>
+  <option onclick="getOption();" value="d">ث</option>
+  <option onclick="getOption();"  value="f" >ج</option>
+</select>
+<br><br>
+
+ 
+
+</div>
+
+
+<script>
+
+function getOption() {
+    var list = document.getElementById("tdd12");
+    var vli=list.hasChildNodes()
+    if (vli!==null) {
+        list.replaceChild(list);
+    }
+    var obj = document.getElementById("mySelect");
+    var x = document.getElementById("mySelect").selectedIndex;
+    document.getElementById("tdd12").innerHTML = obj.options[obj.selectedIndex].text;
+    var vx=obj.options[obj.selectedIndex].text;
+    var vv=document.getElementsByTagName("option")[x].value
+    
+    var paras = document.createElement("td");
+    paras.setAttribute("id", "tr1");
+    
+    var para = document.createElement("td");
+    para.setAttribute("id", "f1");
+    para.setAttribute("colspan", "10");
+	
+	document.getElementById("tt12").appendChild(paras);
+	
+    document.getElementById("tr1").appendChild(para);
+	
+	var para2 = document.createElement("input");
+	para2.setAttribute("id", "f2");
+	para2.setAttribute("value", vv);
+	para2.setAttribute("type", "checkbox");
+	para2.setAttribute("name", "letters");
+	para2.setAttribute("style", "color:black;font-size:30px;");
+    var t2 = document.createTextNode("نعم");
+    document.getElementById("mySelect").label = "newLabel"; 
+    para2.appendChild(t2);
+    document.getElementById("f1").appendChild(para2);
+
+
+	var l1 = document.createElement("label");
+	l1.setAttribute("id", "l1");
+	l1.setAttribute("value", "نعم");
+	l1.setAttribute("style", "color:black;font-size:30px;");
+    var tl2 = document.createTextNode("نعم");
+    l1.appendChild(tl2);
+    document.getElementById("tr1").appendChild(para2);
+
+}
+</script>
+ 
+</body>
+</html>
